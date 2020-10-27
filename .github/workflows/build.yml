@@ -1,14 +1,11 @@
 name: Build
 
-on: [pull_request, issues]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
-        run: echo aaaaaa
-
   open-issue:
     runs-on: ubuntu-latest
     steps:
