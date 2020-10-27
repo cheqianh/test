@@ -6,6 +6,7 @@ jobs:
   open-issue:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: open a issue
         uses: JasonEtco/create-an-issue@v2
         env:
