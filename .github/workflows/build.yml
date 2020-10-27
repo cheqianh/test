@@ -6,6 +6,8 @@ jobs:
   open-issue:
     runs-on: ubuntu-latest
     steps:
+      - name: make some print
+        run: ls
       - uses: actions/checkout@master
       - name: open a issue
         uses: JasonEtco/create-an-issue@v2
