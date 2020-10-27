@@ -21,7 +21,6 @@ jobs:
 
       - name: result
         id: result
-        continue-on-error: true
         run: java --version
 
   open-issue:
@@ -30,7 +29,7 @@ jobs:
       ion-test-driver
     steps:
       - name: test
-        run: echo ${{ needs.ion-test-driver.outcome }}
+        run: echo ${{ needs.ion-test-driver.steps.result.outcome }}
 
       - uses: actions/checkout@master
       - uses: cheqianh/create-an-issue@e6b4b19
