@@ -7,15 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        -
       - uses: cheqianh/create-an-issue@e6b4b19
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
-  ion-test-driver:
-    runs-on: macos-10.15
-    steps:
       - name: Checkout ion-test-driver
         uses: actions/checkout@master
         with:
