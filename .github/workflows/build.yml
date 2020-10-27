@@ -4,7 +4,7 @@ on: [pull_request, issues]
 
 jobs:
   open-issue:
-    runs-on: macos-10.15
+    runs-on: unix-latest
     steps:
       - name: open a issue
         uses: JasonEtco/create-an-issue@v2
