@@ -1,6 +1,5 @@
 ---
 title: Ion-test-driver issue.
-assignees: `{{ payload.sender.login }}`
 labels: bug
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}. 
+Ion-test-driver found behavior changed for commit {{ payload.repository.git_commits_url }}
