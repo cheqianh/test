@@ -15,7 +15,7 @@ jobs:
     if: ${{ failure() && true }}
     steps:
       - name: print
-        run: echo ${{ github.event.pull_request.merged }}
+        run: echo ${{ github.event.pull_request.type }}
       - uses: actions/checkout@master
       - uses: cheqianh/create-an-issue@e6b4b19
         env:
