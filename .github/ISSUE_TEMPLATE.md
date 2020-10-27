@@ -1,6 +1,6 @@
 ---
 title: Error
-assignees: ${{ env.TEST }}
+assignees: 
 labels: bug
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}. a {{ env.TEST }}
+Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}. {{ github.event.pull_request.head.sha }}
