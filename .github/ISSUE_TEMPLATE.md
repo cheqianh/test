@@ -4,4 +4,4 @@ assignee: cheqianh
 labels: bug
 ---
 Ion-test-driver complained about behavior changed for a commit {{ sha }} that created by `{{ payload.sender.login }}`.
-check run is {{ env.GITHUB_WORKFLOW_URL }}
+Workflow url is [link]({{ env.GITHUB_WORKFLOW_URL }})
