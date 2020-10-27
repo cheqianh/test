@@ -15,7 +15,7 @@ jobs:
     if: ${{ failure() && true }}
     steps:
       - name: print
-        run: echo ${{ github.event.pull_request.type }}
+        run: echo ${{ github.event.pull_request.closed }}
       - uses: actions/checkout@master
       - uses: cheqianh/create-an-issue@e6b4b19
         env:
