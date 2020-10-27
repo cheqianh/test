@@ -5,15 +5,19 @@ on: [pull_request, issues]
 jobs:
   open-issue:
     runs-on: ubuntu-latest
+    id: test
     steps:
       - uses: actions/checkout@master
-
       - uses: cheqianh/create-an-issue@e6b4b19
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
+  ion-test-driver:
+    if: ${{ jobs.test.conclusion == 'success' }}
+    runs-on: macos-10.15
+    steps:
       - name: Checkout ion-test-driver
         uses: actions/checkout@master
         with:
@@ -29,7 +33,5 @@ jobs:
 
       - name: Run ion-test-driver
         run: python3 ion-test-driver/amazon/iontest/ion_test_driver.py -o output
-
-
 
 
