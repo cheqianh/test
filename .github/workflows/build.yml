@@ -3,18 +3,7 @@ name: Build
 on: [pull_request, issues]
 
 jobs:
-  open-issue:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: cheqianh/create-an-issue@e6b4b19
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
-
   ion-test-driver:
-    if: ${{ jobs.open-issue.conclusion == 'success' }}
     runs-on: macos-10.15
     steps:
       - name: Checkout ion-test-driver
@@ -30,7 +19,20 @@ jobs:
       - name: Pip install
         run: pip3 install -r ion-test-driver/requirements.txt && pip3 install -e ion-test-driver
 
-      - name: Run ion-test-driver
-        run: python3 ion-test-driver/amazon/iontest/ion_test_driver.py -o output
+      - name: result
+        id: result
+        continue-on-error: true
+        run: java --version
+
+  open-issue:
+    if: ${{ steps.result.outcome == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: cheqianh/create-an-issue@e6b4b19
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
 
