@@ -4,7 +4,8 @@ on: [pull_request, issues]
 
 jobs:
   open-issue:
-    - uses: JasonEtco/create-an-issue@v2
+    - name: open a issue
+      uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
