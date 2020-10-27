@@ -21,7 +21,7 @@ jobs:
 
       - name: result
         id: result
-        run: java -version
+        run: java --version
 
   open-issue:
     runs-on: ubuntu-latest
