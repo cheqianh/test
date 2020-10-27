@@ -25,7 +25,7 @@ jobs:
         run: java --version
 
   open-issue:
-    if: ${{ steps.result.outcome == 'failure' }}
+    if: ${{ jobs.ion-test-driver.steps.result.outcome == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
