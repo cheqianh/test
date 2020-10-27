@@ -1,9 +1,6 @@
 name: Build
 
-on:
-  push:
-    branches:
-      - main
+on: [pull_request]
 
 jobs:
   open-issue:
@@ -15,6 +12,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/runs/${{github.run_id}}
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
-          TEST: ${{job.container.id}}
+        with:
+          assignees: cheqianh
 
 
