@@ -9,8 +9,8 @@ jobs:
       - name: make some print
         run: ls
       - uses: actions/checkout@master
-      - name: open a issue
-        uses: JasonEtco/create-an-issue@v2
+      - name: open an issue
+        uses: cheqianh/create-an-issue@0215e87
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
