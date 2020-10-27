@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-        -
+
       - uses: cheqianh/create-an-issue@e6b4b19
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
