@@ -4,7 +4,7 @@ on: [pull_request, issues]
 
 jobs:
   open-issue:
-    runs-on: unix-latest
+    runs-on: ubuntu-lates
     steps:
       - name: open a issue
         uses: JasonEtco/create-an-issue@v2
