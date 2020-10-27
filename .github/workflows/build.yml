@@ -1,20 +1,10 @@
 name: Build
 
-on:
-  push:
-    branches:
-      - master
+on: [pull_request, issues]
 
 jobs:
   open-issue:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: cheqianh/create-an-issue@e6b4b19
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/runs/${{github.run_id}}
-          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
-          TEST: ${{job.container.id}}
-
+    - uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
