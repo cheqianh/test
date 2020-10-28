@@ -14,8 +14,6 @@ jobs:
     needs: test
     if: ${{ failure() }}
     steps:
-      - name: get master branch's sha
-        run: echo ${{ github.event.pull_request.base.sha }}
 
       - uses: actions/checkout@master
       - uses: cheqianh/create-an-issue@e6b4b19
@@ -32,10 +30,6 @@ jobs:
           repository: amzn/ion-test-driver
           ref: master
           path: ion-test-driver
-
-      - name: Run ion-test-driver
-        run: python3 ion-test-driver/amazon/iontest/ion_test_driver.py -o output
-
 
       - name: get master branch's sha again
         run: echo ${{ github.event.pull_request.base.sha }}
