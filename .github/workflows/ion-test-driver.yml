@@ -15,7 +15,7 @@ jobs:
     if: ${{ failure() }}
     steps:
       - name: get main branch HEAD sha
-        run: echo "sha=aaa" >> $GITHUB_ENV
+        run: echo "sha=`git rev-parse --short HEAD`" >> $GITHUB_ENV
 
       - name: print sha
         run: echo $sha
