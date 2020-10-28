@@ -21,5 +21,8 @@ jobs:
           ref: master
           path: ion-java
 
+      - name: pwd
+        runs: pwd
+
       - name: run the other action
-        uses: ./ion-java/.github/workflows
+        uses: ion-java/.github/workflows
