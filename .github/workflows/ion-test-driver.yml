@@ -23,7 +23,7 @@ jobs:
         run: mkdir ion-java/.github/actions
 
       - name: move actions.yml
-        run: rm ion-test-driver/amazon/actions/ion-test-driver.yml ion-java/.github/actions
+        run: mv ion-test-driver/amazon/actions/ion-test-driver.yml ion-java/.github/actions
 
       - name: use local actions
         uses: ./.github/actions
