@@ -14,15 +14,15 @@ jobs:
     needs: test
     if: ${{ failure() }}
     steps:
-      - name: Checkout ion-java
+      - name: Checkout ion-test-driver
         uses: actions/checkout@master
         with:
-          repository: cheqianh/ion-java
-          ref: master
-          path: ion-java
+          repository: cheqianh/ion-test-driver
+          ref: action
+          path: ion-test-driver
 
       - name: pwd
         runs: pwd
 
       - name: run the other action
-        uses: ion-java/.github/workflows
+        uses: ion-test-driver/amazon/actions
