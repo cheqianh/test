@@ -7,7 +7,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: ls
-        run: ls
+        run: pwd && exit 1
 
   open-issue:
     runs-on: ubuntu-latest
