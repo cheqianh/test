@@ -14,22 +14,17 @@ jobs:
     needs: test
     if: ${{ failure() }}
     steps:
+      - name: get master branch's sha
+        run: echo ${{ github.event.pull_request.base.sha }}
+
       - uses: actions/checkout@master
-
-      - name: ls
-        run: ls
-
-      - name: artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: lists_file
-          path: ./lists
-
-
       - uses: cheqianh/create-an-issue@e6b4b19
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/runs/${{github.run_id}}
-          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
-        with:
-          assignees: ${{ github.event.sender.login }}
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+            GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
+          with:
+            assignees: ${{ github.event.sender.login }}
+
+      - name: get master branch's sha again
+          run: echo ${{ github.event.pull_request.base.sha }}
