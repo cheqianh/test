@@ -19,9 +19,10 @@ jobs:
         with:
           repository: amzn/ion-java
           ref: master
+          path: ion-java
 
       - name: get main branch HEAD sha
-        run: echo "sha=`git rev-parse --short HEAD`" >> $GITHUB_ENV
+        run: cd ion-java && echo "sha=`git rev-parse --short HEAD`" >> $GITHUB_ENV
 
       - name: Checkout ion-test-driver
         uses: actions/checkout@master
@@ -41,4 +42,7 @@ jobs:
 
       - name: Run ion-test-driver
         run: python3 ion-test-driver/amazon/iontest/ion_test_driver.py -o output
-          -i ion-java,https://github.com/amzn/ion-java,${{ github.event.pull_request.head.sha }}
+          -i ion-java,https://github.com/amzn/ion-java,37f48737
+
+      - name: print
+        run: echo $sha
