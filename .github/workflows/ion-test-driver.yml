@@ -22,4 +22,4 @@ jobs:
           path: ion-java
 
       - name: run the other action
-        uses: ./ion-java/.github/workflows/ion-test-driver.yml
+        uses: ./ion-java/.github/workflows
