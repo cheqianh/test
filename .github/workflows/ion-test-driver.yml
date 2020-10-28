@@ -22,7 +22,7 @@ jobs:
           path: ion-test-driver
 
       - name: pwd
-        runs: pwd
+        run: pwd
 
       - name: run the other action
         uses: ion-test-driver/amazon/actions
