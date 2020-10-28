@@ -15,10 +15,10 @@ jobs:
     if: ${{ failure() }}
     steps:
       - name: get master branch's sha again
-      run: echo ${{ github.event.pull_request.base.sha }}
+        run: echo ${{ github.event.pull_request.base.sha }}
 
       - name: get master branch's sha again
-      run: echo ${{ github.event.pull_request.base.sha }}
+        run: echo ${{ github.event.pull_request.base.sha }}
 
       - uses: actions/checkout@master
       - uses: cheqianh/create-an-issue@e6b4b19
