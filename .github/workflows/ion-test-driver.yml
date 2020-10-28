@@ -27,4 +27,4 @@ jobs:
           assignees: ${{ github.event.sender.login }}
 
       - name: get master branch's sha again
-          run: echo ${{ github.event.pull_request.base.sha }}
+        run: echo ${{ github.event.pull_request.base.sha }}
