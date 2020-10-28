@@ -25,13 +25,12 @@ jobs:
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
         with:
           assignees: ${{ github.event.sender.login }}
-      - uses: cheqianh/create-an-issue@e6b4b19
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
+      - name: Checkout ion-test-driver
+        uses: actions/checkout@master
         with:
-            assignees: ${{ github.event.sender.login }}
+          repository: amzn/ion-test-driver
+          ref: master
+          path: ion-test-driver
 
       - name: get master branch's sha again
         run: echo ${{ github.event.pull_request.base.sha }}
