@@ -6,8 +6,8 @@ jobs:
   test:
     runs-on: macos-10.15
     steps:
-      - name: make a file
-        run:
+      - name: ls
+        run: ls
 
   open-issue:
     runs-on: ubuntu-latest
