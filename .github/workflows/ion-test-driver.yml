@@ -15,9 +15,7 @@ jobs:
     if: ${{ failure() }}
     steps:
       - name: get main branch HEAD sha
-        run: |
-          export sha=aa
-          echo "::set-env name=sha::$sha"
+        run: echo "sha=aaa" >> $GITHUB_ENV
 
       - name: print sha
         run: echo $sha
