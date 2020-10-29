@@ -5,25 +5,28 @@ on: [pull_request]
 jobs:
   ion-test-driver:
     runs-on: macos-10.15
-    outputs:
-      report: ${{ steps.step1.outputs.test }}
     steps:
-      - name: Checkout ion-java
-        uses: actions/checkout@master
+      - name: Analyze two implementations
+        continue-on-error: true
+        id: result-diff
+        run: exit 1
+
+      - name: Check if ion-test-driver fails
+        if: ${{ steps.result-diff.outcome == 'failure' }}
+        run: echo 'Implementation behavior changed, Refer to the analysis report in the previous step for the reason.' && exit 1
+
+  open-issue:
+    runs-on: ubuntu-latest
+    needs: ion-test-driver
+    if: ${{ failure() }}
+    steps:
+      - uses: actions/checkout@master
+      - name: open an issue
+        uses: cheqianh/create-an-issue@e6b4b19
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
         with:
-          path: ion-java
-      - name: Checkout ion-test-driver
-        uses: actions/checkout@master
-        with:
-          repository: cheqianh/ion-test-driver
-          ref: action
-          path: ion-test-driver
+          assignees: ${{ github.event.sender.login }}
 
-      - name: make dir
-        run: mkdir ion-java/.github/actions
-
-      - name: move actions.yml
-        run: mv ion-test-driver/amazon/actions/ion-test-driver.yml ion-java/.github/actions
-
-      - name: use local actions
-        uses: ./.github/actions
