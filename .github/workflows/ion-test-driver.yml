@@ -20,10 +20,10 @@ jobs:
     needs: ion-test-driver
     if: ${{ failure() }}
     steps:
-      - name: print full_name
-        run: echo ${{github.event.pull_request.head.repo.full_name}}
+      - name: print url
+        run: echo ${{repository.html_url}}
       - name: print  full_name
-        run: echo ${{github.repository.full_name}}
+        run: echo ${{github.repository}}
       - uses: actions/checkout@master
       - name: open an issue
         uses: cheqianh/create-an-issue@e6b4b19
