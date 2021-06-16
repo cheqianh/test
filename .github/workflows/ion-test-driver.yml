@@ -28,6 +28,5 @@ jobs:
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
         with:
-          assignees: ${{ github.event.sender.login }}
           filename: .github/ion-test-driver-issue.md
 
