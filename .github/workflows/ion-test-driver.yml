@@ -22,11 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: open an issue
-        uses: cheqianh/create-an-issue@e6b4b19
+        uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-#          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
+          GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
         with:
           assignees: ${{ github.event.sender.login }}
           filename: .github/ion-test-driver-issue.md
