@@ -27,9 +27,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_WORKFLOW_URL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
           GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
-          GITHUB_ISSUE_TITLE: 'Demo''ing Git Issue Creation'
-          GITHUB_ISSUE_BODY: 'Demo''ing Git Issue Creation'
-          GITHUB_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
-          GITHUB_REPO_OWNER: 'test'
-          GITHUB_REPO_NAME: 'github-issue-creation'
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_OWNER: 'test'
+          GITHUB_REPOSITORY: 'github-issue-creation'
+          GITHUB_ISSUE_TITLE: 'Demo''ing Git Issue Creation title'
+          GITHUB_ISSUE_BODY: 'Demo''ing Git Issue Creation body'
 
